@@ -1,6 +1,6 @@
 import pgzrun
-import pgzero
-screen: pgzero.screen.Screen
+from pgzero.screen import Screen
+screen: Screen
 
 def draw():
     screen.draw.text("Hello world!", topleft=(10, 10))
