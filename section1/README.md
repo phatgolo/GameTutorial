@@ -45,15 +45,6 @@ Next, let's replace our "Hello world!", and line drawing with the following:
 ```
 
 
-## Clean up
-
-Remove these two lines, they are not needed anymore since we don't use screen directly to draw.
-
-```python
-from pgzero.screen import Screen
-screen: Screen
-```
-
 Run the program and see that it works (press `F5`), you should have a result looking like this:
 
 <img src="../.docs/section1.png">
