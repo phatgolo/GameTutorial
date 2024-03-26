@@ -5,7 +5,7 @@ class Player:
     MAX_FORCE = 5
     
     def __init__(self, world_width: int, world_height: int):
-        self.ship = Actor("player")
+        self.ship = Actor("player2")
         self.main_thruster = Actor("thruster", anchor=("center", "top"))
         self.right_thruster = Actor("thruster_right", anchor=("left", "center"))
         self.left_thruster = Actor("thruster_left", anchor=("right", "center"))

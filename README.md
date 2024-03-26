@@ -10,7 +10,9 @@ Install the following on your computer:
 
 1.  [Install python](https://www.python.org/downloads/)
     1. Click the big yellow button under "Download the latest version for Windows".
-    1. Once downloaded, start the installer and follow the instructions.
+    1. Once downloaded, start the installer.
+    1. Make suer to check "Add python.exe to PATH"
+    1. Click "Install Now"
 1. [Install Visual Studio Code](https://code.visualstudio.com/download)
     1. Click the blue download button for Windows.
     1. Once downloaded, start the installer and follow the instructions.
@@ -137,6 +139,6 @@ Now it's time to install the game developement framework `pgzero`. That is also 
 W:\game>pip install pgzero
 ```
 
-#### Setup done, good job!
+## Setup done, good job!
 
-Now follow the instructions in [section0](section0/)
+Now follow the instructions in [Section0 (Hello World)](section0/)

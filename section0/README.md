@@ -2,13 +2,13 @@
 
 ## About
 
-In this section we are going to draw some text in a window. The text "Hello world!" has been used by programmers forever to test that things are working as it should.
+In this section we are going learn some basics. We are going to draw some text in a window. The text "Hello world!" has been used by programmers forever to test that things are working as it should. We will go through the coordinate system used by computers to draw things to the screen and we will draw some lines.
 
 ## Create a new file
 
 That is easiest done through the file tab witin VS Code.
 
-<img src="../.docs/image9.png">
+<img src="../.docs/image9.png" width="340px">
 
 Name the file `game.py`.
 
@@ -29,9 +29,9 @@ In the terminal write the following.
 W:\game>pgzrun game.py
 ```
 
-This should open a new window with the text "Hello world!" written. If this doesn't happen, make sure that the code is written the same as above.
+This should open a new window with the text "Hello world!" written. If this doesn't happen, make sure that the code is written exactly as above.
 
-<div style="background:#ff8; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
+<div style="background:#ff8; margin-bottom: 1em; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
     <p>Test on your own:</p>
     <ul>
         <li>Try changing the text to something other than "Hello world!".</li>
@@ -60,7 +60,7 @@ At the end of your code, wirte:
 pgzrun.go()
 ```
 
-This means that we call a method called `go` from the `pgzrun` module. The parantheses `()` tells the computer that you want to run the method.
+This means that we call a function called `go` from the `pgzrun` module. The parantheses `()` tells the computer that you want to run the function.
 
 Your complete code should now look like this:
 
@@ -79,7 +79,7 @@ Now, press `F5` on your keyboard to start the debugger. Select "**Python File** 
 
 You have a warning in the code. It is marked with a squiggly line under the word `screen`. If you move your mouse over the warning it will give you a hint about what is potentially wrong.
 
-<img src="../.docs/image10.png">
+<img src="../.docs/image10.png" width="500px">
 
 Now this is just a warning. The reson for the warning is that VS Code doesn't know what screen is. The code is working though so this is just a warning. You can fix the warning by giving VS Code a hint about what `screen` is.
 
@@ -91,3 +91,69 @@ screen: Screen
 ```
 
 Now the warning should disapear and you should be able to trust that something might be off if you see these squiggly lines in the future.
+
+## Coordinate system
+
+Note that the coputers coordinate system starts at the top left corner of the window. So the text you have written is placed 10 pixels to the right, and 10 pixels from the top in the game window, which is what `(10, 10)` means. In the image below we illustrate where a pixel would be placed if it is placed at `(18, 13)`, meaning `x` is set to `18` and `y` is set to `13`.
+
+<img src="../.docs/image11.png">
+
+### Draw a line
+
+Let's draw some lines starting from the middle of the window to all corners. This is a good way for you to get a feeling of how the coordinate system works. I happen to know that the window is 800 pixels wide and 600 pixels high.
+
+We will use the `screen.draw.line` [function](https://learnpython.org/en/Functions) for this that takes the following arguments:
+
+```python
+screen.draw.line(start, end, color)
+```
+
+Add `screen.draw.line((400, 300), (800, 600), (255, 255, 255))` to your code, like so:
+
+```python
+def draw():
+    screen.draw.text("Hello world!", topleft=(10, 10))
+    screen.draw.line((400, 300), (800, 600), (255, 255, 255))
+```
+
+We have replaced `start` with `(400, 300)` meaning we want to start at x 400 and y 300 (note that that is half the width and height of the window).
+Next, we have replaced `end` with `(800, 600)` meaning that we want to draw the line to the bottom right corner of the window. Last we have replaced color with (255, 255, 255) which means white. 
+
+Run the program and see that it works (press `F5`).
+
+Next, add the following line, just below:
+
+```python
+    screen.draw.line((400, 300), (800, 0), (255, 255, 255))
+```
+
+Now we draw a line from the middle of the creen to the top right corner.
+
+Run the program and see that it works (press `F5`).
+
+One more:
+
+```python
+    screen.draw.line((400, 300), (0, 600), (255, 255, 255))
+```
+
+Can you make the last line going from the center to the top right corner `(0, 0)`?
+
+Run the program and see that it works (press `F5`), you should have a result looking like this:
+
+<img src="../.docs/section0.png">
+
+
+<div style="background:#ff8; margin-bottom: 1em; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
+    <p>Test on your own:</p>
+    <ul>
+        <li>Explore what else you can draw, in the next section we will draw a spaceship using an image but you can draw circles, rectangles and other geometric shapes without loading an image. To find out what is available, google "gpzero screen draw". You should be able to find documentation about what is available.</li>
+    </ul>
+</div>
+
+If you get stuck, you can find the complete code here:
+* [game.py](./game.py)
+
+## Next
+
+Next up, [Section 1 (Draw a spaceship)](../section1)
