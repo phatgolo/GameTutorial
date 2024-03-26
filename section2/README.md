@@ -64,8 +64,9 @@ Let's think about this. How can we fix this? We need to move it up. Try subtract
 ```python
 player.y = HEIGHT - 100
 ```
+Run the game and see that it works (press F5).
 
-Now, that's better. But what if we change the scale of the player? There is a better way of doing this. The reson why half the player is showing in the fist place, is because the local origin `(0, 0)` of the player is at the center of the image. So to push the player up we need to move it up with half the height of the spaceschip. We can get the height of the player from the height property (`player.height`). Then we just need to devide it by 2 to get half of the height:
+Now, that's better. But what if we change the scale of the player? There is a better way of doing this. The reason why half the player is showing in the fist place, is because the local origin `(0, 0)` of the player is at the center of the image. So to push the player up we need to move it up with half the height of the player. We can get the height of the player from the height property (`player.height`). Then we just need to devide it by 2 to get half of the height:
 
 ```python
 player.y = HEIGHT - player.height / 2
@@ -73,7 +74,7 @@ player.y = HEIGHT - player.height / 2
 
 Run the game and see that it works (press `F5`).
 
-I'd like to get it a bit more up still though, so we can skip the `/ 2`.
+I'd like to get it a bit more up still though, so we can skip the `/ 2`, but now you know what it all means.
 
 So the final thing should look like this:
 
