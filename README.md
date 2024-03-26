@@ -118,6 +118,17 @@ To begin with, you want to open the terminal again, but from within Visual Studi
 
 In the menu, locate to `Terminal > New Terminal` to open the Terminal. This way you don't need to move between the terminal and Visual Studio Code.
 
+#### Activate virtual environment
+
+From the terminal write the following `.\.venv\Scripts\activate`:
+
+```shell
+W:\game>.\.venv\Scripts\activate
+
+(.venv) W:\game>
+```
+
+
 #### Install pgzero
 
 Now it's time to install the game developement framework `pgzero`. That is also done through the terminal.
