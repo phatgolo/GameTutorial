@@ -280,4 +280,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 5 (Making a player class)](../section4)
+Next up, [Section 5 (Making a player class)](../section5)
