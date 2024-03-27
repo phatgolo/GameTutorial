@@ -45,7 +45,7 @@ Next, let's replace our "Hello world!", and line drawing with the following:
 ```
 
 
-▶️ **Run the program and see that it works (press `F5`)**, you should have a result looking like this:
+▶️ **Run the game and see that it works (press `F5`)**, you should have a result looking like this:
 
 <img src="../.docs/section1.png">
 

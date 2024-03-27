@@ -84,7 +84,7 @@ def update():
     global player_force, player_acceleration, player_velocity
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should be able to move the player to the left and right by pressing `A` and `D` on your keyboard. 
+▶️ **Run the game and see that it works (press `F5`)**, you should be able to move the player to the left and right by pressing `A` and `D` on your keyboard. 
 
 There is a problem though, the player will not stop moving when you release the `A` or `D` key. This is because we are not setting the force to zero when we release the key. We can do this by adding the following lines under the `if keyboard.d:` line:
 
@@ -97,7 +97,7 @@ There is a problem though, the player will not stop moving when you release the 
         player_force = Vector2(0, 0)
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should be able to move the player to the left and right by pressing `A` and `D` on your keyboard. But our changes didn't really help.
+▶️ **Run the game and see that it works (press `F5`)**, you should be able to move the player to the left and right by pressing `A` and `D` on your keyboard. But our changes didn't really help.
 
 We also need to set the acceleration to zero at the end of each frame. Add the following line at the end of the `update` function:
 
@@ -108,7 +108,7 @@ We also need to set the acceleration to zero at the end of each frame. Add the f
     player_acceleration = Vector2(0, 0)
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should be able to move the player to the left and right by pressing `A` and `D` on your keyboard. Things should have improved but still not great.
+▶️ **Run the game and see that it works (press `F5`)**, you should be able to move the player to the left and right by pressing `A` and `D` on your keyboard. Things should have improved but still not great.
 
 Another thing we need to do is to slow down the player a little each frame. A simple way of doing that is to multiply the velocity with a number less than 1. Add the following line at the end of the `update` function:
 
@@ -117,7 +117,7 @@ Another thing we need to do is to slow down the player a little each frame. A si
     player_velocity *= 0.92
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, the player should now stop moving when you release the key, try tapping the key to see that the player moves a little each time you press.
+▶️ **Run the game and see that it works (press `F5`)**, the player should now stop moving when you release the key, try tapping the key to see that the player moves a little each time you press.
 
 Now the player moves a little bit to fast for my taste, let's set a max speed the player can move. Add the following lines at the end of the `update` function, just before where we set the `player.pos`:
 
@@ -138,7 +138,7 @@ Add a definition of `MAX_VELOCITY` at the top of your code, just under where you
 MAX_VELOCITY = 5
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, the player should not move faster than 5 pixels per frame.
+▶️ **Run the game and see that it works (press `F5`)**, the player should not move faster than 5 pixels per frame.
 
 ### ✏️ Try on your own
 
@@ -159,7 +159,7 @@ Add a definition of `MAX_FORCE` at the top of your code, just over where you def
 MAX_FORCE = 3
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, the player should not move faster than 5 pixels per frame and the force should not be more than 3.
+▶️ **Run the game and see that it works (press `F5`)**, the player should not move faster than 5 pixels per frame and the force should not be more than 3.
 
 Now it's time to add controls for moving the player up and down. Change the keyboard control un the `update` function to look like this:
 
@@ -193,7 +193,7 @@ We also need to update so that the player doesn't go outside the top and bottom 
         player_velocity.y = 0
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, the player should not move outside the window.
+▶️ **Run the game and see that it works (press `F5`)**, the player should not move outside the window.
 
 One last thing we can do, it is not obvious but mulitiplying a number over and over by 0.92 will make it small quickly but it will never be zero. We can add a check to set the velocity to zero if it is very small. Add the following lines at the end of the `update` function, just after where we set the `player_velocity`:
 
@@ -203,7 +203,7 @@ One last thing we can do, it is not obvious but mulitiplying a number over and o
         player_velocity = Vector2(0, 0)
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should not see a difference, but the player will come to a full stop instead of just going really slow.
+▶️ **Run the game and see that it works (press `F5`)**, you should not see a difference, but the player will come to a full stop instead of just going really slow.
 
 ## Debugging
     
@@ -215,7 +215,7 @@ When you are working with physics, it can be hard to see what is going on. You c
     screen.draw.text("Velocity: ({0}, {1})".format(player_velocity.x, player_velocity.y), topleft=(10, 50))
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should see the force, acceleration and velocity of the player on the screen.
+▶️ **Run the game and see that it works (press `F5`)**, you should see the force, acceleration and velocity of the player on the screen.
 
 Now, we see the force and velocity changing, but not the acceleration. This is because the acceleration is set to zero at the end of the `update` function. To fix this, we need to store the acceleration in a variable that we only use for debugging. Duplicate the `player_acceleration` definition at the top of your code and name it `player_debug_acceleration`.
 
@@ -242,7 +242,7 @@ Change the `update` function to add the player_debug_acceleration to the global 
     global player_force, player_acceleration, player_velocity, player_debug_acceleration
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should see the acceleration of the player on the screen.
+▶️ **Run the game and see that it works (press `F5`)**, you should see the acceleration of the player on the screen.
 
 ## Simplify
 
@@ -265,7 +265,7 @@ def draw():
     print_vector("Velocity", player_velocity, 10, 50)
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should see the force, acceleration and velocity of the player on the screen. Your window should look something like this:
+▶️ **Run the game and see that it works (press `F5`)**, you should see the force, acceleration and velocity of the player on the screen. Your window should look something like this:
 
 <img src="../.docs/section4.png">
 

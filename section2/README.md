@@ -113,7 +113,7 @@ scale_and_place_player()
 pgzrun.go()
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**, you should have a result looking like this:
+▶️ **Run the game and see that it works (press `F5`)**, you should have a result looking like this:
 
 <img src="../.docs/section2.png">
 

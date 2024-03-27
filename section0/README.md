@@ -73,7 +73,7 @@ def draw():
 pgzrun.go()
 ```
 
-▶️ **Run the program and see that it works (press `F5`)**. Select "**Python File** Debug the currently active Python file" in the list that appears.
+▶️ **Run the game and see that it works (press `F5`)**. Select "**Python File** Debug the currently active Python file" in the list that appears.
 
 ## Fixing the warning
 
@@ -119,7 +119,7 @@ def draw():
 We have replaced `start` with `(400, 300)` meaning we want to start at x 400 and y 300 (note that that is half the width and height of the window).
 Next, we have replaced `end` with `(800, 600)` meaning that we want to draw the line to the bottom right corner of the window. Last we have replaced color with (255, 255, 255) which means white. 
 
-▶️ **Run the program and see that it works (press `F5`)**
+▶️ **Run the game and see that it works (press `F5`)**
 
 Next, add the following line, just below:
 
@@ -129,7 +129,7 @@ Next, add the following line, just below:
 
 Now we draw a line from the middle of the creen to the top right corner.
 
-▶️ **Run the program and see that it works (press `F5`)**
+▶️ **Run the game and see that it works (press `F5`)**
 
 One more:
 
@@ -139,7 +139,7 @@ One more:
 
 Can you make the last line going from the center to the top right corner `(0, 0)`?
 
-▶️ **Run the program and see that it works (press `F5`)**, you should have a result looking like this:
+▶️ **Run the game and see that it works (press `F5`)**, you should have a result looking like this:
 
 <img src="../.docs/section0.png">
 
