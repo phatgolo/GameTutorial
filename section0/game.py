@@ -1,4 +1,5 @@
 import pgzrun
+
 from pgzero.screen import Screen
 screen: Screen
 

@@ -12,7 +12,7 @@ Open [pgzhelper](https://raw.githubusercontent.com/QuirkyCort/pgzhelper/main/pgz
 
 In VS Code, open `pgzhelper.py` and past the code you copied by pressing `ctrl`+`v`.
 
-Open `game.py` and enter the following under the line `from pgzero.builtins import Actor`:
+Open `game.py` and enter the following above the line `from pgzero.screen import Screen` at the top of the document:
 
 ```python
 from pgzhelper import *
@@ -113,16 +113,15 @@ scale_and_place_player()
 pgzrun.go()
 ```
 
-Run the program and see that it works (press `F5`), you should have a result looking like this:
+▶️ **Run the program and see that it works (press `F5`)**, you should have a result looking like this:
 
 <img src="../.docs/section2.png">
 
-<div style="background:#ff8; margin-bottom: 1em; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
-    <p>Test on your own:</p>
-    <ul>
-        <li>Don't be scared to test things, can you rotate the player?</li>
-    </ul>
-</div>
+### ✏️ Try on your own
+
+> 📋 Don't be scared to test things, can you rotate the player?
+
+## Stuck?
 
 If you get stuck, you can find the complete code here:
 * [game.py](./game.py)

@@ -1,5 +1,6 @@
 import pgzrun
 from pgzero.builtins import Actor, keyboard
+
 from pgzhelper import *
 from pgzero.screen import Screen
 screen: Screen
@@ -15,10 +16,16 @@ def scale_and_place_player():
     player.y = HEIGHT - player.height
 
 def update():
-    if keyboard.a and player.left > 0:
+    if keyboard.a:
         player.x -= 1
-    if keyboard.d and player.right < WIDTH:
+    if keyboard.d:
         player.x += 1
+
+    if player.left < 0:
+        player.left = 0
+    if player.right > WIDTH:
+        player.right = WIDTH
+
 
 def draw():
     screen.clear()

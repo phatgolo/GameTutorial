@@ -23,7 +23,7 @@ Take it slow when writing code, it is important that new lines and spaces are ke
 
 ## Run your program
 
-In the terminal write the following.
+In the terminal write the following and hit enter.
 
 ```shell
 W:\game>pgzrun game.py
@@ -31,14 +31,14 @@ W:\game>pgzrun game.py
 
 This should open a new window with the text "Hello world!" written. If this doesn't happen, make sure that the code is written exactly as above.
 
-<div style="background:#ff8; margin-bottom: 1em; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
-    <p>Test on your own:</p>
-    <ul>
-        <li>Try changing the text to something other than "Hello world!".</li>
-        <li>Try changing where the text appears on the screen. Hint, look at topleft=(10, 10).</li>
-    </ul>
-    <p>To run the code again after your changes, just write <em>pgzrun game.py</em> again from the terminal.</p>
-</div>
+### ✏️ Try on your own
+
+> 📋 Try changing the text to something other than "Hello world!".
+
+> 📋 Try changing where the text appears on the screen. 💡Hint: look at `topleft=(10, 10)`.
+
+To run the code again after your changes, just write `pgzrun game.py` and hit enter again in the terminal.
+
 
 ## Run the program from VS Code
 
@@ -73,7 +73,7 @@ def draw():
 pgzrun.go()
 ```
 
-Now, press `F5` on your keyboard to start the debugger. Select "**Python File** Debug the currently active Python file" in the list that appears.
+▶️ **Run the program and see that it works (press `F5`)**. Select "**Python File** Debug the currently active Python file" in the list that appears.
 
 ## Fixing the warning
 
@@ -119,7 +119,7 @@ def draw():
 We have replaced `start` with `(400, 300)` meaning we want to start at x 400 and y 300 (note that that is half the width and height of the window).
 Next, we have replaced `end` with `(800, 600)` meaning that we want to draw the line to the bottom right corner of the window. Last we have replaced color with (255, 255, 255) which means white. 
 
-Run the program and see that it works (press `F5`).
+▶️ **Run the program and see that it works (press `F5`)**
 
 Next, add the following line, just below:
 
@@ -129,7 +129,7 @@ Next, add the following line, just below:
 
 Now we draw a line from the middle of the creen to the top right corner.
 
-Run the program and see that it works (press `F5`).
+▶️ **Run the program and see that it works (press `F5`)**
 
 One more:
 
@@ -139,17 +139,15 @@ One more:
 
 Can you make the last line going from the center to the top right corner `(0, 0)`?
 
-Run the program and see that it works (press `F5`), you should have a result looking like this:
+▶️ **Run the program and see that it works (press `F5`)**, you should have a result looking like this:
 
 <img src="../.docs/section0.png">
 
+### ✏️ Try on your own
 
-<div style="background:#ff8; margin-bottom: 1em; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
-    <p>Test on your own:</p>
-    <ul>
-        <li>Explore what else you can draw, in the next section we will draw a spaceship using an image but you can draw circles, rectangles and other geometric shapes without loading an image. To find out what is available, google "gpzero screen draw". You should be able to find documentation about what is available.</li>
-    </ul>
-</div>
+> 📋 Explore what else you can draw, in the next section we will draw a spaceship using an image but you can draw circles, rectangles and other geometric shapes without loading an image. To find out what is available, google "gpzero screen draw". You should be able to find documentation about what is available.
+
+## Stuck?
 
 If you get stuck, you can find the complete code here:
 * [game.py](./game.py)

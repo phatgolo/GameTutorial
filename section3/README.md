@@ -32,7 +32,7 @@ def update():
 
 Remember, similarly to the draw function, the update function is called around 60 times per second. So as long as a is pressed, we will move the player to the left by 1 pixel per frame. `-=` means set the value `player.x` of it's current value minus what ever comes after, in this case 1. You can also write `+=`, `*=` and `/=`. Another way of writing this is `player.x = player.x - 1`, which would be the same thing.
 
-Run the program and see that it works (press `F5`), you should be able to move to the left by pressing `A` on your keyboard. But something is off.
+▶️ **Run the program and see that it works (press `F5`)**, you should be able to move to the left by pressing `A` on your keyboard. But something is off.
 
 <img src="../.docs/image13.png">
 
@@ -46,7 +46,7 @@ def draw():
     player.draw()
 ```
 
-Run the program and see that it works (press `F5`), now you should not see a trail of ships when you move the player to the left.
+▶️ **Run the program and see that it works (press `F5`)**, now you should **not** see a trail of ships when you move the player to the left.
 
 Ok, so let's add right as well:
 
@@ -54,41 +54,45 @@ Ok, so let's add right as well:
 def update():
     if keyboard.a:
         player.x -= 1
+
     if keyboard.d:
         player.x += 1
 ```
 
-Run the program and see that it works (press `F5`), you should be able to move to the left and right by pressing `A` and `D` on your keyboard.
+▶️ **Run the program and see that it works (press `F5`)**, you should be able to move to the left and right by pressing `A` and `D` on your keyboard.
 
-One problem is that we can move the player off screen, let's limit it to the sides of the screen. We can do that by updating the if statements:
+One problem is that we can move the player off screen, let's limit it to the sides of the screen. We can do that by updating the `update` function like this:
 
 ```python
 def update():
-    if keyboard.a and player.left > 0:
+    if keyboard.a:
         player.x -= 1
-    if keyboard.d and player.right < WIDTH:
+    if keyboard.d:
         player.x += 1
+
+    if player.left < 0:
+        player.left = 0
+    if player.right > WIDTH:
+        player.right = WIDTH
 ```
 
-So before we move the player to the left, we check if the `A` key is pressed AND the players left side is larger than 0 (which is the left side of the window). Simarlily we check if the `D` key is pressed AND the players right side is smaller than the with of the window (which is the right side of the window).
+So if the player is to the left of the window, we set the left side of the player to be 0. If the player is to the right of the window, we set the right side of the player to be the width of the window.
 
 This will limit the players movement to the right and left side of the window.
 
-
-Run the program and see that it works (press `F5`), you should be able to move the player with your `A` and `D` keys on the keyboard.
+▶️ **Run the program and see that it works (press `F5`)**, you should be able to move the player with your `A` and `D` keys on the keyboard.
 
 <img src="../.docs/section3.png">
 
-<div style="background:#ff8; margin-bottom: 1em; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
-    <p>Test on your own:</p>
-    <ul>
-        <li>Can you change the how quickly the player moves?</li>
-    </ul>
-</div>
+### ✏️ Try on your own
+
+> 📋 Can you change the how quickly the player moves?
+
+## Stuck?
 
 If you get stuck, you can find the complete code here:
 * [game.py](./game.py)
 
 ## Next
 
-Next up, [Section 3 (Move the player)](../section3)
+Next up, [Section 4 (Player physics)](../section4)

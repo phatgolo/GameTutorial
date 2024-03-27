@@ -45,16 +45,15 @@ Next, let's replace our "Hello world!", and line drawing with the following:
 ```
 
 
-Run the program and see that it works (press `F5`), you should have a result looking like this:
+▶️ **Run the program and see that it works (press `F5`)**, you should have a result looking like this:
 
 <img src="../.docs/section1.png">
 
-<div style="background:#ff8; margin-bottom: 1em; color:#000; padding: 0.5em 1em; font-weight:bold;font-family:monospace;">
-    <p>Test on your own:</p>
-    <ul>
-        <li>Test other versions of the ships from the asset packs. Remember to copy the files over to your images directory. Also you need to have the same name in your code as your file in the images folder but if you change both to be called "player2" for instance, it will work fine.</li>
-    </ul>
-</div>
+### ✏️ Try on your own
+
+> 📋 Test other versions of the ships from the asset packs. Remember to copy the files over to your images directory. Also you need to have the same name in your code as your file in the images folder but if you change both to be called "player2" for instance, it will work fine.
+
+## Stuck?
 
 If you get stuck, you can find the complete code here:
 * [game.py](./game.py)
