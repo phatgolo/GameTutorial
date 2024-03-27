@@ -1,33 +1,33 @@
 import pgzrun
-from player import Player
-from asteroids import Asteroids
 
+from player import Player
+from asteriod_field import AsteroidField
 from pgzero.screen import Screen
 screen: Screen
 
 WIDTH  = 800
 HEIGHT = 600
 
-MAX_FORCE = 5
+points = 0
 
 player = Player(WIDTH, HEIGHT)
-asteroids = Asteroids(WIDTH, HEIGHT)
-score = 0
+asteroid_field = AsteroidField(WIDTH, HEIGHT)
 
 def update():
-    global score
-    score = asteroids.update(score)
-    if asteroids.collides(player.ship):
-        quit()
-
+    global points
+    points = asteroid_field.update(points)
     player.update()
 
-def draw():
-    global score
-    screen.clear()
-    asteroids.draw()
-    player.draw()
-    screen.draw.text("Score: {score}".format(score = score), topleft=(10, 10))
+    if asteroid_field.check_collision(player.actor):
+        print("Game over")
+        print(f"Points: {points}")
+        exit()
 
-player.place()
+def draw():
+    screen.clear()
+    asteroid_field.draw()
+    player.draw(screen, False)
+
+    screen.draw.text(str(points), topright=(WIDTH - 10, 10), fontsize=32)
+
 pgzrun.go()
