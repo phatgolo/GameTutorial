@@ -33,7 +33,7 @@ We need to start by making sure you have everything correctly installed.
 
 You can find the terminal from the windows start menu by searching for "windows terminal".
 
-<img src=".docs/image.png">
+<img src=".docs/image1.png">
 
 You should see a window that looks like this: (Note that the text in the terminal is going to be different on your computer, instead of `W:\>`, it might say something else, that is OK)
 

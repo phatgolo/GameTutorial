@@ -38,13 +38,15 @@ from typing import List
 from pgzero.builtins import Actor
 ```
 
-Still in the `__init__` method, let's populate the list of asteroids with some random asteroids, we add the asteriods to the asteriods list using the `append` method that comes with the List class. 
+Find an asteroid image that you want to use for your asteroids. I've picked the image that is located under `kenney_space-shooter-redux\PNG\Meteors\meteorBrown_tiny1.png`, but you can pick any of the other meteor images. Copy the image you have selected over to the `images` directory you created previously and name it `asteroid`.
+
+In the `__init__` method, let's populate the list of asteroids with some random asteroids, we add the asteriods to the asteriods list using the `append` method that comes with the List class.
 
 Add the following to the `__init__` method:
 
 ```python
         for _ in range(self.AMOUNT):
-            asteroid = Actor("asteroid1")
+            asteroid = Actor("asteroid")
             asteroid.pos = randint(0, world_width), -randint(0, world_height)
             self.asteroids.append(asteroid)
 ```
@@ -290,9 +292,9 @@ def update():
 
 ### ✏️ Try on your own
 
-> 📋 Can you make an asteriod class, with a random speed to make it a bit more challenging
-
 > 📋 Can you load different sizes of asteroids by using `Actor("asteroid" + str(randint(1, 4)))` and name the asteriod images asteroid1, asteroid2 etc?
+
+> 📋 Can you make an asteriod class, with a random speed and rotation to make it a bit more challenging
 
 ## Stuck?
 
@@ -303,4 +305,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 8 (HUD)](../section8)
+Next up, [Section 8 (HUD and health)](../section8)

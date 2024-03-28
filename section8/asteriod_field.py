@@ -1,7 +1,18 @@
-from typing import List
+from typing import List, Optional
 from pgzero.builtins import Actor
 from random import randint, random
 from pgzhelper import *
+
+class Asteroid(Actor):
+    def __init__(self, image: str):
+        super().__init__(image)
+        self.radius = self.width * 0.4
+        self.rotation_speed = randint(-1, 1)
+        self.movement_speed = random() + 1.5
+
+    def update(self):
+        self.angle += self.rotation_speed
+        self.y += self.movement_speed
 
 class AsteroidField:
     AMOUNT = 15
@@ -15,12 +26,15 @@ class AsteroidField:
             asteroid.pos = randint(0, world_width), -randint(0, world_height)
             self.asteroids.append(asteroid)
     
-    def check_collision(self, actor: Actor) -> bool:
+    def check_collision(self, actor: Actor) -> Optional[Asteroid]:
         for asteroid in self.asteroids:
             if asteroid.circle_collidecircle(actor):
-                return True
+                return asteroid
 
-        return False
+        return None
+    
+    def remove_asteroid(self, asteroid: Asteroid):
+        self.asteroids.remove(asteroid)
 
     def update(self, points: int) -> int:
         for asteroid in self.asteroids:
@@ -36,13 +50,6 @@ class AsteroidField:
         for asteroid in self.asteroids:
             asteroid.draw()
 
-class Asteroid(Actor):
-    def __init__(self, image: str):
-        super().__init__(image)
-        self.radius = self.width * 0.4
-        self.rotation_speed = randint(-1, 1)
-        self.movement_speed = random() + 1.5
 
-    def update(self):
-        self.angle += self.rotation_speed
-        self.y += self.movement_speed
+
+    

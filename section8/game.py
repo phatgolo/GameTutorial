@@ -1,7 +1,8 @@
 import pgzrun
+
+from hud import draw_healtbar, draw_score
 from player import Player
-from asteroids import Asteroids
-from draw import draw_healtbar
+from asteriod_field import AsteroidField
 
 from pgzero.screen import Screen
 screen: Screen
@@ -9,30 +10,34 @@ screen: Screen
 WIDTH  = 800
 HEIGHT = 600
 
-MAX_FORCE = 5
+points = 0
 
 player = Player(WIDTH, HEIGHT)
-asteroids = Asteroids(WIDTH, HEIGHT)
-score = 0
+asteroid_field = AsteroidField(WIDTH, HEIGHT)
 
 def update():
-    global score
-    score = asteroids.update(score)
-    if asteroids.collides(player.ship):
-        dead = player.take_damage(10)
-        if dead:
-            quit()
+    global points
 
-
+    points = asteroid_field.update(points)
     player.update()
 
+    asteroid = asteroid_field.check_collision(player.actor)
+    if asteroid:
+        player.take_damage()
+        asteroid_field.remove_asteroid(asteroid)
+
+        if player.health <= 0:
+            print("Game Over")
+            print("Score: ", points)
+            quit()
+
 def draw():
-    global score
     screen.clear()
-    asteroids.draw()
-    player.draw()
-    screen.draw.text("Score: {score}".format(score = score), topright=(WIDTH - 10, 10))
-    # screen.draw.text("Health: {health}".format(health = player.health), topleft=(10, 10))
-    draw_healtbar(screen, player.health, player.max_health)
+
+    asteroid_field.draw()
+    player.draw(screen, False)
+
+    draw_healtbar(screen, 10, 10, player.health)
+    draw_score(screen, points, WIDTH - 10, 10)
 
 pgzrun.go()
