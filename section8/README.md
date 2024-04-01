@@ -323,4 +323,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 9 (Game over and restart)](../section9)
+Next up, [Section 9 (Projectiles and explosions)](../section9)
