@@ -1,4 +1,4 @@
-# Section 4 (Player physics)
+# Chapter 4 (Player physics)
 
 ## About
 
@@ -267,7 +267,7 @@ def draw():
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should see the force, acceleration and velocity of the player on the screen. Your window should look something like this:
 
-<img src="../.docs/section4.png">
+<img src="../.docs/chapter04.png">
 
 ### ✏️ Try on your own
 
@@ -280,4 +280,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 5 (Making a player class)](../section5)
+Next up, [Chapter 5 (Making a player class)](../chapter05)

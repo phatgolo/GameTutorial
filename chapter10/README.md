@@ -1,4 +1,4 @@
-# Section 10 (UI and game state)
+# Chapter 10 (UI and game state)
 
 ## About
 
@@ -8,7 +8,7 @@ In this section we are going to build some more UI for our game. We will create 
 
 Create a new file called `menu.py`, and add the following code:
 
-```python
+```python   
 
 ```
 
@@ -16,7 +16,7 @@ Create a new file called `menu.py`, and add the following code:
 
 ▶️ **Run the game and see that it works (press `F5`)**, 
 
-<img src="../.docs/section9.png">
+<img src="../.docs/chapter09.png">
 
 ### ✏️ Try on your own
 
@@ -33,4 +33,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 9 (Game over and restart)](../section9)
+Next up, [Chapter 9 (Game over and restart)](../chapter09)

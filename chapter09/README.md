@@ -1,4 +1,4 @@
-# Section 9 (Projectiles and explosions)
+# Chapter 9 (Projectiles and explosions)
 
 ## About
 
@@ -345,7 +345,7 @@ We can also remove the `check_collision` method from the `AsteroidField` class s
 
 We are now done with this section, you should now have a game that looks like this:
 
-<img src="../.docs/section9.png">
+<img src="../.docs/chapter09.png">
 
 ### ✏️ Try on your own
 
@@ -363,4 +363,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 10 (UI and game state)](../section10)
+Next up, [Chapter 10 (UI and game state)](../chapter10)

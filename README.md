@@ -141,4 +141,4 @@ W:\game>pip install pgzero
 
 ## Setup done, good job!
 
-Now follow the instructions in [Section0 (Hello World)](section0/)
+Now follow the instructions in [Chapter 0 (Hello World)](chapter00/)

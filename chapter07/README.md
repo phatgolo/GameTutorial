@@ -1,4 +1,4 @@
-# Section 7 (Asteroids) 
+# Chapter 7 (Asteroids) 
 
 ## About
 
@@ -288,7 +288,7 @@ def update():
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should see "Game over" along your total score in the terminal when an asteriod hits the player. 🥳 Congratulations! You have now finnished your first full game loop. You have a player, challenges, points, and game over. Your game should look something like this:
 
-<img src="../.docs/section7.png">
+<img src="../.docs/chapter07.png">
 
 ### ✏️ Try on your own
 
@@ -305,4 +305,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 8 (HUD and health)](../section8)
+Next up, [Chapter 8 (HUD and health)](../chapter08)

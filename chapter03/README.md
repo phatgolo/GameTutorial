@@ -1,4 +1,4 @@
-# Section 3 (Move the player)
+# Chapter 3 (Move the player)
 
 ## About
 
@@ -82,7 +82,7 @@ This will limit the players movement to the right and left side of the window.
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should be able to move the player with your `A` and `D` keys on the keyboard.
 
-<img src="../.docs/section3.png">
+<img src="../.docs/chapter03.png">
 
 ### ✏️ Try on your own
 
@@ -95,4 +95,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 4 (Player physics)](../section4)
+Next up, [Chapter 4 (Player physics)](../chapter04)

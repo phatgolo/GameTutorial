@@ -1,4 +1,4 @@
-# Section 1 (Draw a spaceship)
+# Chapter 1 (Draw a spaceship)
 
 ## About
 
@@ -47,7 +47,7 @@ Next, let's replace our "Hello world!", and line drawing with the following:
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should have a result looking like this:
 
-<img src="../.docs/section1.png">
+<img src="../.docs/chapter01.png">
 
 ### ✏️ Try on your own
 
@@ -60,4 +60,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 2 (Place and scale the spaceship)](../section2)
+Next up, [Chapter 2 (Place and scale the spaceship)](../chapter02)

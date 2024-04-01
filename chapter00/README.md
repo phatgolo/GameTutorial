@@ -1,4 +1,4 @@
-# Section 0 (Hello world)
+# Chapter 0 (Hello world)
 
 ## About
 
@@ -141,7 +141,7 @@ Can you make the last line going from the center to the top right corner `(0, 0)
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should have a result looking like this:
 
-<img src="../.docs/section0.png">
+<img src="../.docs/chapter00.png">
 
 ### ✏️ Try on your own
 
@@ -154,4 +154,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 1 (Draw a spaceship)](../section1)
+Next up, [Chapter 1 (Draw a spaceship)](../chapter01)

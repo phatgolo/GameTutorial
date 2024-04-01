@@ -1,4 +1,4 @@
-# Section 8 (HUD and health)
+# Chapter 8 (HUD and health)
 
 ## About
 
@@ -306,7 +306,7 @@ def update():
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should see the health bar decrease when you hit an asteroid.
 
-<img src="../.docs/section8.png">
+<img src="../.docs/chapter08.png">
 
 ### ✏️ Try on your own
 
@@ -323,4 +323,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 9 (Projectiles and explosions)](../section9)
+Next up, [Chapter 9 (Projectiles and explosions)](../chapter09)

@@ -1,4 +1,4 @@
-# Section 2 (Place the spaceship)
+# Chapter 2 (Place the spaceship)
 
 ## About
 
@@ -6,7 +6,7 @@ This is a short section where we will change the size of the ship and place it a
 
 ## Get the helper library
 
-Create a new file called `pgzhelper.py`. If you don't remember how to make a new file, it is mentioned in [section0](/section0/).
+Create a new file called `pgzhelper.py`. If you don't remember how to make a new file, it is mentioned in [chapter00](/chapter00/).
 
 Open [pgzhelper](https://raw.githubusercontent.com/QuirkyCort/pgzhelper/main/pgzhelper.py) in your web browser and select all code by pressing `ctrl`+`a` on your keyboard. Copy the text to the clipboard by pressing `ctrl`+`c`.
 
@@ -115,7 +115,7 @@ pgzrun.go()
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should have a result looking like this:
 
-<img src="../.docs/section2.png">
+<img src="../.docs/chapter02.png">
 
 ### ✏️ Try on your own
 
@@ -128,4 +128,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 3 (Move the player)](../section3)
+Next up, [Chapter 3 (Move the player)](../chapter03)

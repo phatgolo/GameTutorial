@@ -1,4 +1,4 @@
-# Section 6 (Adding thrusters to the ship)
+# Chapter 6 (Adding thrusters to the ship)
 
 ## About
 
@@ -24,7 +24,7 @@ We set the `anchor` to center top to make it spin around the center top of the i
 ## Place and draw the main thruster
 In the `position_player` method, add the following line to place the thruster at the bottom center of the ship:
 
-If you don't have a `position_player` method, you got asked to make it in previous section. Check the previous sections [player.py](../section5/player.py) for reference.
+If you don't have a `position_player` method, you got asked to make it in previous section. Check the previous sections [player.py](../chapter05/player.py) for reference.
 
 ```python
     def position_player(self):
@@ -137,7 +137,7 @@ In total your `draw` method should look like this:
 
 ▶️ **Run the game and see that it works (press `F5)**, you should have thrusters now in all direction, plus one at the back of the ship that always show unless you move backwards. Your game should look something like this:
 
-<img src="../.docs/section6.png">
+<img src="../.docs/chapter06.png">
 
 ### ✏️ Try on your own
 
@@ -151,4 +151,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 7 (Asteroids)](../section7)
+Next up, [Chapter 7 (Asteroids)](../chapter07)

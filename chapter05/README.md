@@ -1,4 +1,4 @@
-# Section 5 (Making a player class)
+# Chapter 5 (Making a player class)
 
 ## About
 
@@ -6,7 +6,7 @@ In this section we are going to create a Player class. We do this to encapsulate
 
 ## Create a player.py file
 
-Create a new file called `player.py`. If you don't remember how to make a new file, it is mentioned in [section0](/section0/).
+Create a new file called `player.py`. If you don't remember how to make a new file, it is mentioned in [chapter00](/chapter00/).
 
 ## Create a Player class
 
@@ -351,7 +351,7 @@ Finally, we should be able to run the game.
 
 ▶️ **Run the game and see that it works (press `F5`)**. Something is off though, the player is to big. But we scale it in the `__init__` method of the Player class.
 
-The problem is that we are not importing our helper from [section2](../section2) in the Player class. Let's add that to the top of the `player.py` file:
+The problem is that we are not importing our helper from [chapter02](../chapter02) in the Player class. Let's add that to the top of the `player.py` file:
 
 ```python
 from pgzhelper import *
@@ -360,7 +360,7 @@ from pgzhelper import *
 Now we have a clean `game.py` and `player.py` file. It will be easier to manage new things we want to add to the game and player in the coming sections.
 
 ▶️ **Run the game and see that it works (press `F5`)**. You should have a result looking like this:
-<img src="../.docs/section5.png">
+<img src="../.docs/chapter05.png">
 
 
 ### ✏️ Try on your own
@@ -378,4 +378,4 @@ If you get stuck, you can find the complete code here:
 
 ## Next
 
-Next up, [Section 6 (Adding thrusters to the ship)](../section6)
+Next up, [Chapter 6 (Adding thrusters to the ship)](../chapter06)
