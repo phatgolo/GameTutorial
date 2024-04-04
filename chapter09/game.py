@@ -1,6 +1,5 @@
 import pgzrun
 
-from explosion import Explosion
 from player import Player
 from asteriod_field import AsteroidField
 

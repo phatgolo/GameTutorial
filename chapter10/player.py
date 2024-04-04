@@ -1,7 +1,9 @@
-from pgzero.builtins import Actor, keyboard
+from typing import List
+from pgzero.builtins import Actor, keyboard, keys
 from pygame import Vector2
 from pgzero.screen import Screen
 from pgzhelper import *
+from projectile import Projectile
 
 MAX_VELOCITY = 5
 MAX_FORCE = 3
@@ -35,12 +37,18 @@ class Player:
         self.window_width = window_width
         self.window_height = window_height
 
+        self.projectiles: List[Projectile] = []
+
     def take_damage(self):
         self.health -= 1
 
     def print_vector(self, screen: Screen, text: str, vec: Vector2, left: int, top: int):
         screen.draw.text("{0}: ({1:.2f}, {2:.2f})".format(text, vec.x, vec.y), topleft=(left, top))
 
+    def handle_key_down(self, key: str):
+        if key == keys.SPACE:
+            self.projectiles.append(Projectile("laser1", (self.actor.x, self.actor.y), Vector2(0, -1)))
+    
     def handle_input(self):
         if keyboard.a:
             self.force.x -= 1
@@ -94,8 +102,16 @@ class Player:
     def update(self):
         self.handle_input()
         self.update_physics()
-
+        
+        for projectile in self.projectiles:
+            projectile.update()
+            if projectile.bottom < 0:
+                self.projectiles.remove(projectile)
+        
     def draw(self, screen: Screen, debug: bool = False):
+        for projectile in self.projectiles:
+            projectile.draw()
+
         if self.force.y <= 0:
             self.main_thruster.animate()
             self.main_thruster.draw()
@@ -112,12 +128,8 @@ class Player:
 
         self.actor.draw()
 
+
         if debug:
             self.print_vector(screen, "Force", self.force, 10, 10)
             self.print_vector(screen, "Acceleration", self.debug_acceleration, 10, 30)
             self.print_vector(screen, "Velocity", self.velocity, 10, 50)
-
-def maprange(x: int, a: int, b: int, c: int, d: int):
-    w =  (x-a) / (b-a)
-    y = c + w * (d-c)
-    return y
