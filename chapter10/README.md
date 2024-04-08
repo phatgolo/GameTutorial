@@ -345,12 +345,12 @@ Save the images to your images folder.
 
 ### Adding the menu
 
-Create a new file called `ui_menu.py`, and add the following code:
+Create a new file called `ui_main_menu.py`, and add the following code:
 
 ```python
 from pgzero.builtins import Actor
 
-class Menu:
+class MainMenu:
     def __init__(self, window_width: int, window_height: int):
         self.window_width = window_width
         self.window_height = window_height
@@ -397,26 +397,26 @@ class Button(Actor):
 
 We draw the button by calling the `super().draw()` method. This will draw the button image. We then draw the text on top of the button.
 
-Next up we are going to use our newly created buttons in the `Menu` class. Add the following code to the `Menu` class:
+Next up we are going to use our newly created buttons in the `MainMenu` class. Add the following code to the `MainMenu` class:
 
 ```python
 from pgzero.screen import Screen
 from ui import Button
 
-class Menu:
+class MainMenu:
     def __init__(self, window_width: int, window_height: int):
         ...
 
-        self.play_button = Button("start", self.frame.centerx, self.frame.centery - 20)
+        self.start_button = Button("start", self.frame.centerx, self.frame.centery - 20)
         self.quit_button = Button("quit", self.frame.centerx, self.frame.centery + 20)
 
     def draw(self, screen: Screen):
         self.frame.draw()
-        self.play_button.draw(screen)
+        self.start_button.draw(screen)
         self.quit_button.draw(screen)
 ```
 
-Finally we need to add the `Menu` to our `Game` class. Add the following code to the `game_state.py` file:
+Finally we need to add the `MainMenu` to our `Game` class. Add the following code to the `game_state.py` file:
 
 ```python
 class Game:
@@ -425,7 +425,7 @@ class Game:
 
         ...        
 
-        self.menu = Menu(window_width, window_height)
+        self.menu = MainMenu(window_width, window_height)
 ```
 
 We also need to make sure we draw the menu in case we are at the `MAIN_MENU` state. Add the following code to the `draw` method in the `Game` class:
@@ -448,7 +448,7 @@ class Game:
 
 <img src="../.docs/image22.png">
 
-## Menu interaction
+## MainMenu interaction
 
 As you saw, the menu is not working yet. It only shows the buttons but we can't interact with them. Let's fix that.
 
@@ -473,16 +473,16 @@ class Button(Actor):
 
 We check if the mouse is over the button by calling the `collidepoint` method where `pos` will contain the mouse position (x, y). If the mouse is over the button, we change the image to `ui_button_hover` and set the `text_color` to light gray. If the mouse is not over the button, we change the image back to `ui_button` and set the `text_color` to dark gray.
 
-We also need to add a method to the `Menu` class that calls the `on_mouse_move` method on the buttons. Add the following code to the `Menu` class:
+We also need to add a method to the `MainMenu` class that calls the `on_mouse_move` method on the buttons. Add the following code to the `MainMenu` class:
 
 ```python
 ...
 
-class Menu:
+class MainMenu:
     ...
 
     def on_mouse_move(self, pos):
-        self.play_button.on_mouse_move(pos)
+        self.start_button.on_mouse_move(pos)
         self.quit_button.on_mouse_move(pos)
 ```
 
@@ -536,29 +536,29 @@ class Game:
                 pass
 ```
 
-...and add it to the `Menu` class:
+...and add it to the `MainMenu` class:
 
 ```python
 ...
 
-class Menu:
+class MainMenu:
     ...
 
     def on_mouse_down(self, pos, button):
         if button == mouse.LEFT:
-            if self.play_button.collidepoint(pos):
+            if self.start_button.collidepoint(pos):
                 print("Start game")
             elif self.quit_button.collidepoint(pos):
                 quit()
 ```
 
-Now, we don't want to take any action here, and there is no way for us to change the game state from the menu itself. We need to return some kind of action from the `on_mouse_down` method. We can do this by returning an enum from the `on_mouse_down` method. Add the following code to the `Menu` class:
+Now, we don't want to take any action here, and there is no way for us to change the game state from the menu itself. We need to return some kind of action from the `on_mouse_down` method. We can do this by returning an enum from the `on_mouse_down` method. Add the following code to the `MainMenu` class:
 
 ```python
 from enum import Enum
 ...
 
-class MenuActions(Enum):
+class MainMenuActions(Enum):
     NONE = 0
     START_GAME = 1
     QUIT = 2
@@ -569,20 +569,20 @@ class MenuActions(Enum):
 ```python
 ...
 
-class Menu:
+class MainMenu:
     ...
 
     def on_mouse_down(self, pos, button):
         if button == mouse.LEFT:
-            if self.play_button.collidepoint(pos):
-                return MenuActions.START_GAME
+            if self.start_button.collidepoint(pos):
+                return MainMenuActions.START_GAME
             elif self.quit_button.collidepoint(pos):
-                return MenuActions.QUIT
+                return MainMenuActions.QUIT
 
-        return MenuActions.NONE
+        return MainMenuActions.NONE
 ```
 
-Now we can update the `on_mouse_down` method in the `Game` class to take action based on the return value from the `Menu` class. Add the following code to the `Game` class:
+Now we can update the `on_mouse_down` method in the `Game` class to take action based on the return value from the `MainMenu` class. Add the following code to the `Game` class:
 
 ```python
 ...
@@ -595,9 +595,9 @@ class Game:
             case GameState.MAIN_MENU:
                 action = self.menu.on_mouse_down(pos, button)
                 match action:
-                    case MenuActions.START_GAME:
+                    case MainMenuActions.START_GAME:
                         self.state = GameState.GAME
-                    case MenuActions.QUIT:
+                    case MainMenuActions.QUIT:
                         quit()
             case _:
                 pass
@@ -605,12 +605,12 @@ class Game:
 
 ▶️ **Run the game and see that it works (press `F5`)**, you should now be able to start the game and quit the game from the menu.
 
-Let's add the title of the game to the menu. Add the following code to the `Menu` class:
+Let's add the title of the game to the menu. Add the following code to the `MainMenu` class:
 
 ```python
 ...
 
-class Menu:
+class MainMenu:
     ...
 
     def draw(self, screen: Screen):
@@ -638,7 +638,7 @@ Change the `Game Name` to whatever you want your game to be called.
 
 ## Starfield background
 
-I think it's a bit boring with a black background. Let's add a starfield background to the game. We are going to create a new class called `Starfield` that will contain the stars. Create a new file called `starfield.py` and add the following code:
+I think it's a bit boring with a black background. Let's add a star field background to the game. We are going to create a new class called `Starfield` that will contain the stars. Create a new file called `star_field.py` and add the following code:
 
 ```python
 from random import random
@@ -678,7 +678,7 @@ class StarField:
 
 ```
 
-Ok, that was a complete starfield class. Let's break it down a bit. We have a constant `AMOUNT` that we use to determine how many stars we want in the starfield. We create a list of stars in the constructor. We sort the stars based on the `z` value. The `z` value is used to determine the brightness of the star. We draw the stars in the `draw` method. We move the stars down the screen and if they are outside the screen we move them back to the top again. This should give the effect that the ship is moving through space.
+Ok, that was a complete star field class. Let's break it down a bit. We have a constant `AMOUNT` that we use to determine how many stars we want in the star field. We create a list of stars in the constructor. We sort the stars based on the `z` value. The `z` value is used to determine the brightness of the star. We draw the stars in the `draw` method. We move the stars down the screen and if they are outside the screen we move them back to the top again. This should give the effect that the ship is moving through space.
 
 `z = r ** 4` means `r` to the power of `4` or `r⁴` which is the same as `r × r × r × r`. We use this to make more stars appear further away.
 
@@ -686,11 +686,11 @@ Ok, that was a complete starfield class. Let's break it down a bit. We have a co
 
 The red line symbolizes `z = r ** 4` and the blue just `z = r`. See how the red line is much steeper than the blue line? This is what we want, we want the stars to appear further away.
 
-Now we need to add the starfield to the game. Add the following code to the `Game` class:
+Now we need to add the star field to the game. Add the following code to the `Game` class:
 
 ```python
 ...
-from starfield import StarField
+from star_field import StarField
 
 class Game:
     def __init__(self, window_width: int, window_height: int):
@@ -713,9 +713,9 @@ class Game:
                 ...
 ```
 
-▶️ **Run the game and see that it works (press `F5`)**, you should now have a starfield background in the menu and the game.
+▶️ **Run the game and see that it works (press `F5`)**, you should now have a star field background in the menu and the game.
 
-The final thing we will do is a `pause` screen. We will add a `PAUSE` state to the `GameState` enum. Add the following code to the `game_state.py` file:
+I think we need a `pause` menu. We will add a `PAUSE` state to the `GameState` enum. Add the following code to the `game_state.py` file:
 
 ```python
 class GameState(Enum):
@@ -724,12 +724,12 @@ class GameState(Enum):
     GAME = 3
 ```
 
-We need to create a new `PauseMenu` class. Make a copy of the `ui_menu.py` file. Rename the copied file to `ui_pause_menu.py` and change the class name in that file to `PauseMenu`. Also change the `MenuActions` enum to `PauseActions`.
+We need to create a new `PauseMenu` class. Make a copy of the `ui_main_menu.py` file. Rename the copied file to `ui_pause_menu.py` and change the class name in that file to `PauseMenu`. Also change the `MainMenuActions` enum to `PauseMenuActions`.
 
-The two actions we want in the Pause menu is `CONTINUE` and `EXIT`, add them to the `PauseActions` enum:
+The two actions we want in the Pause menu is `CONTINUE` and `EXIT`, add them to the `PauseMenuActions` enum:
 
 ```python
-class PauseActions(Enum):
+class PauseMenuActions(Enum):
     CONTINUE = 0
     EXIT = 1
 ```
@@ -753,14 +753,14 @@ class PauseMenu:
         self.frame = Actor('ui_window2', anchor=("center", "center"), pos=(window_width / 2, window_height / 2))
 
         self.continue_button = Button("continue", self.frame.centerx, self.frame.centery - 20)
-        self.exit_button = Button("exit", self.frame.centerx, self.frame.centery + 20)
+        self.exit_button = Button("main menu", self.frame.centerx, self.frame.centery + 20)
 
     def on_mouse_down(self, pos, button) -> Optional[int]:
         if button == mouse.LEFT:
             if self.continue_button.collidepoint(pos):
-                return PauseActions.CONTINUE
+                return PauseMenuActions.CONTINUE
             elif self.exit_button.collidepoint(pos):
-                return PauseActions.EXIT
+                return PauseMenuActions.EXIT
             else:
                 return None
         return None
@@ -791,6 +791,12 @@ class Game:
 
     ...
 
+    def update_state(self, new_state: GameState):
+        self.set_state(new_state)
+
+    def set_state(self, new_state: GameState):
+        self.state = new_state
+
     def draw(self, screen: Screen):
         screen.clear()
 
@@ -816,9 +822,9 @@ class Game:
                 action = self.paus_menu.on_mouse_down(pos, button)
                 match action:
                     case PausActions.CONTINUE:
-                        self.state = GameState.GAME
+                        self.update_state(GameState.GAME)
                     case PausActions.EXIT:
-                        self.state = GameState.MAIN_MENU
+                        self.update_state(GameState.MAIN_MENU)
             case _:
                 pass
 
@@ -831,6 +837,8 @@ class Game:
             case _:
                 pass
 ```
+
+I've also introduced two new methods in the `Game` class, `update_state` and `set_state`. The `update_state` method is used to update the state of the game. The `set_state` method is used to set the state of the game. We use the `set_state` method in the `update_state` method. This means that we will not call `self.state = XXX` directly in the code, more on this later.
 
 Finally we need to make it so that the `PauseMenu` appears when the player presses the `ESC` key while in the game. Add the following at the end of the `Game` class (remember to import `keys` from `pgzero.builtins`):
 
@@ -848,7 +856,7 @@ class Game:
             case GameState.GAME:
                 self.player.handle_key_down(key)
                 if key == keys.ESCAPE:
-                    self.state = GameState.PAUS_MENU
+                    self.update_state(GameState.PAUS_MENU)
             case _:
                 pass
 ```
@@ -867,17 +875,288 @@ The last thing I'd like to do is to rename the `hud.py` file to `ui_hud.py`, sin
 You should now have a game that looks like this:
 <video src="../.docs/movie1.mp4" autoplay loop muted>
 
+## Animating the menus
+
+Let's add some animations to the menus. We are going to use the `animate` function to manipulate the `Actor` class to move the menu in from top and bottom of the screen.
+
+In order to do this we need to make some changes to the `PauseMenu` and `MainMenu` classes.
+
+### Animating the `PauseMenu`
+
+Let's start with the `PauseMenu` class. Change the `__init__` method to look like this:
+
+```python
+class PauseMenu:
+    def __init__(self, window_width: int, window_height: int):
+        self.window_width = window_width
+        self.window_height = window_height
+
+        self.frame = Actor('ui_window2', anchor=("center", "center"), pos=(window_width / 2, window_height / 2))
+        
+        self.frame_show_y = self.frame.centery
+        self.frame_hide_y = -(self.frame.height / 2)
+        self.continue_button = Button("continue", self.frame.centerx, self.frame_show_y - 20)
+        self.exit_button = Button("main menu", self.frame.centerx, self.frame_show_y + 20)
+```
+
+We add two new member variables `frame_show_y` and `frame_hide_y` to keep track of where the frame should be when it's shown and hidden. We set the `continue_button` and `exit_button` to be positioned at the `frame_show_y` position.
+
+Next we add a new show method to the `PauseMenu` class:
+
+
+```python
+class PauseMenu:
+    ...
+
+    def show(self, on_finished = None):
+        self.frame.y = self.frame_hide_y
+        animate(
+            self.frame,
+            tween="out_elastic",
+            y=self.frame_show_y,
+            duration=0.5,
+            on_finished=on_finished
+        )
+```
+
+Since we are going to show the menu when calling this method, we need to make sure the menu is first hidden. We set the `frame.y` to `frame_hide_y` and then animate the `frame` to `frame_show_y` using the `out_elastic` tween. The `duration` is set to `0.5` seconds. We also take an optional `on_finished` argument that will be called when the animation is finished.
+
+We also need to add a new hide method to the `PauseMenu` class:
+
+```python
+class PauseMenu:
+    ...
+
+    def hide(self, on_finished = None):
+        self.frame.y = self.frame_show_y
+        animate(
+            self.frame,
+            tween="accelerate",
+            y=self.frame_hide_y,
+            duration=0.2,
+            on_finished=on_finished
+        )
+```
+
+This method is similar to the `show` method but we set the `frame.y` to `frame_show_y` and animate the `frame` to `frame_hide_y` using the `accelerate` tween. The `duration` is set to `0.2` seconds.
+
+Let's update the `Game` class to use the new `show` and `hide` methods. Add the following code to the `Game` class:
+
+```python
+class Game:
+    ...
+
+    def update_state(self, new_state: GameState):
+        match self.state:
+            case GameState.PAUSE_MENU:
+                self.pause_menu.hide(lambda: self.set_state(new_state))
+            case _:
+                self.set_state(new_state)
+
+    def set_state(self, new_state: GameState):
+        self.state = new_state
+
+        match new_state:
+            case GameState.PAUSE_MENU:
+                self.pause_menu.show()
+            case _:
+                pass
+```
+
+In the `update_state` method we check if the current state is `PAUSE_MENU`. If it is we call the `hide` method on the `pause_menu` and when the animation is finished we call the `set_state` method. If the current state is not `PAUSE_MENU` we call the `set_state` method directly.
+
+In the `set_state` method we set the new state and check if the new state is `PAUSE_MENU`. If it is we call the `show` method on the `pause_menu`.
+
+▶️ **Run the game and see that it works (press `F5`)**, You will see that the menu background is animating but not the buttons. We will fix that next.
+
+Update the `show` and `hide` methods in the `PauseMenu` class to also animate the buttons:
+
+```python
+class PauseMenu:
+    ...
+
+    def show(self, on_finished = None):
+        self.frame.y = self.frame_hide_y
+        self.continue_button.y = self.frame_hide_y - 20
+        self.exit_button.y = self.frame_hide_y + 20
+
+        animate(
+            self.frame,
+            tween="out_elastic",
+            y=self.frame_show_y,
+            duration=0.5,
+            on_finished=on_finished
+        )
+
+        animate(
+            self.continue_button,
+            tween="out_elastic",
+            y=self.frame_show_y - 20,
+            duration=0.5
+        )
+
+        animate(
+            self.exit_button,
+            tween="out_elastic",
+            y=self.frame_show_y + 20,
+            duration=0.5
+        )
+
+    def hide(self, on_finished = None):
+        self.frame.y = self.frame_show_y
+        self.continue_button.y = self.frame_show_y - 20
+        self.exit_button.y = self.frame_show_y + 20
+
+        animate(
+            self.frame,
+            tween="accelerate",
+            y=self.frame_hide_y,
+            duration=0.2,
+            on_finished=on_finished
+        )
+
+        animate(
+            self.continue_button,
+            tween="accelerate",
+            y=self.frame_hide_y - 20,
+            duration=0.2
+        )
+
+        animate(
+            self.exit_button,
+            tween="accelerate",
+            y=self.frame_hide_y + 20,
+            duration=0.2
+        )
+```
+
+Now we can simplify this code using an array of objects we want to animate:
+
+```python
+def show(self, on_finished = None):
+        for obj, y in [
+            (self.frame, 0), 
+            (self.continue_button, -20),
+            (self.exit_button, 20)
+        ]:
+            obj.y = self.frame_hide_y + y
+            animate(
+                obj,
+                tween="out_elastic",
+                y=self.frame_show_y + y,
+                duration=0.5,
+                on_finished=on_finished
+            )
+
+    def hide(self, on_finished = None):
+        for obj, y in [
+            (self.frame, 0), 
+            (self.continue_button, -20),
+            (self.exit_button, 20)
+        ]:
+            obj.y = self.frame_show_y + y
+            animate(
+                obj,
+                tween="accelerate",
+                y=self.frame_hide_y + y,
+                duration=0.2,
+                on_finished=on_finished
+            )
+```
+
+▶️ **Run the game and see that it works (press `F5`)**, You should now see the menu and buttons animate in and out.
+
+I understand that this looks a little bit strange, what does the following code realy mean?
+
+```python
+        for obj, y in [
+            (self.frame, 0), 
+            (self.continue_button, -20),
+            (self.exit_button, 20)
+        ]:
+```
+
+This is a way to loop over a list of tuples. The first element in the tuple is assigned to `obj` and the second element is assigned to `y`. This is a way to loop over multiple objects and their positions. So the rows means: `(self.frame, 0)` means that first time we loop `obj` is set to `self.frame`, second time `obj` is set to `self.continue_button` and third time `obj` is set to `self.exit_button`. The `y` value is set to `0`, `-20` and `20` respectively.
+
+You can add more things, by expanding the tuples with more values. For example if you want to have different durations of the animations, you can add a third value to the tuples and use it in the `animate` function.
+
+```python
+        for obj, y, duration in [
+            (self.frame, 0, 0.5), 
+            (self.continue_button, -20, 0.55),
+            (self.exit_button, 20, 0.6)
+        ]:
+```
+
+### ✏️ Try on your own
+> 📋 Can you adjust the duration to to be a little bit different for the buttons and the frame?
+
+### Animating the `MainMenu`
+
+Let's add the same animations to the `MainMenu` class. Change the `__init__` method to look like this:
+
+```python
+class MainMenu:
+    def __init__(self, window_width: int, window_height: int):
+        self.window_width = window_width
+        self.window_height = window_height
+
+        self.frame = Actor('ui_window1', anchor=("center", "center"), pos=(window_width / 2, window_height / 2))
+        
+        self.frame_show_y = self.frame.centery
+        self.frame_hide_y = -(self.frame.height / 2)
+        self.start_button = Button("start", self.frame.centerx, self.frame_show_y - 20)
+        self.quit_button = Button("quit", self.frame.centerx, self.frame_show_y + 20)
+```
+
+Copy the `show` and `hide` methods from the `PauseMenu` class and add them to the `MainMenu` class. Update the `show` and `hide` methods to animate the `start_button` and `quit_button` as well.
+
+Now we need to change the `Game` class to use the new `show` and `hide` methods. Add the following code to `game_state.py`:
+
+```python
+class Game:
+    ...
+
+    def update_state(self, new_state: GameState):
+        match self.state:
+            case GameState.MAIN_MENU:
+                self.main_menu.hide(lambda: self.set_state(new_state))
+            case GameState.PAUSE_MENU:
+                self.pause_menu.hide(lambda: self.set_state(new_state))
+            case GameState.GAME:
+                self.set_state(new_state)
+
+    def set_state(self, new_state: GameState):
+        self.state = new_state
+        match new_state:
+            case GameState.MAIN_MENU:
+                self.main_menu.show()
+            case GameState.PAUSE_MENU:
+                self.pause_menu.show()
+            case GameState.GAME:
+                pass
+```
+
+▶️ **Run the game and see that it works (press `F5`)**, You should now see the menu and buttons animate in and out.
+<video src="../.docs/chapter10.mp4" autoplay loop muted>
 
 
 ## Stuck?
 
 If you get stuck, you can find the complete code here:
 
+* [asteroid_field.py](./asteroid_field.py)
+* [explosion.py](./explosion.py)
+* [game_state.py](./game_state.py)
 * [game.py](./game.py)
 * [player.py](./player.py)
-* [hud.py](./hud.py)
-* [asteroid_field.py](./asteroid_field.py)
+* [projectile.py](./projectile.py)
+* [star_field.py](./star_field.py)
+* [ui_hud.py](./ui_hud.py)
+* [ui_main_menu.py](./ui_main_menu.py)
+* [ui_pause_menu.py](./ui_pause_menu.py)
+* [ui.py](./ui.py)
 
 ## Next
 
-Next up, [Chapter 9 (Game over and restart)](../chapter09)
+Next up, [Chapter 11 (Game over and restart)](../chapter11)

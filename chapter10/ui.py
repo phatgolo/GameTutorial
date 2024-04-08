@@ -1,13 +1,15 @@
-from pgzero.builtins import Actor
+from typing import List
+from pgzero.builtins import Actor, animate, mouse
 from pgzero.screen import Screen
+from enum import Enum
+
+from pgzhelper import *
 
 class Button(Actor):
     def __init__(self, text: str, x: int, y: int):
-        super().__init__("ui_button", anchor=("center", "center"))
+        super().__init__("ui_button", pos=(x, y), anchor=("center", "center"))
         self.text = text
         self.text_color = (50, 50, 50)
-        self.x = x
-        self.y = y
 
     def on_mouse_move(self, pos):
         if self.collidepoint(pos):
@@ -21,7 +23,7 @@ class Button(Actor):
         super().draw()
         screen.draw.text(
             self.text, 
-            center=(self.x, self.y), 
+            center=self.pos, 
             fontsize=18, 
             fontname="kenny", 
             color=self.text_color
