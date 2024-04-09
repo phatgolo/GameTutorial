@@ -98,12 +98,12 @@ class Game:
     def set_state(self, new_state: GameState):
         self.state = new_state
         match new_state:
-            case GameState.GAME_OVER:
-                self.game_over_menu.show()
             case GameState.MAIN_MENU:
                 self.main_menu.show()
             case GameState.PAUSE_MENU:
                 self.pause_menu.show()
+            case GameState.GAME_OVER:
+                self.game_over_menu.show()
             case GameState.RESTART:
                 self.player = Player(self.window_width, self.window_height)
                 self.asteroid_field = AsteroidField(self.window_width, self.window_height)
