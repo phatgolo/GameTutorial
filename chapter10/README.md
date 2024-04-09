@@ -1123,7 +1123,7 @@ class Game:
                 self.main_menu.hide(lambda: self.set_state(new_state))
             case GameState.PAUSE_MENU:
                 self.pause_menu.hide(lambda: self.set_state(new_state))
-            case GameState.GAME:
+            case _:
                 self.set_state(new_state)
 
     def set_state(self, new_state: GameState):

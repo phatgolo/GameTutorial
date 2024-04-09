@@ -79,15 +79,10 @@ class Game:
     def update_state(self, new_state: GameState):
         match self.state:
             case GameState.MAIN_MENU:
-                match new_state:
-                    case GameState.GAME:
-                        self.player = Player(self.window_width, self.window_height)
-                        self.asteroid_field = AsteroidField(self.window_width, self.window_height)
-                        self.main_menu.hide(lambda: self.set_state(new_state))
-
+                self.main_menu.hide(lambda: self.set_state(new_state))
             case GameState.PAUSE_MENU:
                 self.pause_menu.hide(lambda: self.set_state(new_state))
-            case GameState.GAME:
+            case _:
                 self.set_state(new_state)
 
     def set_state(self, new_state: GameState):
