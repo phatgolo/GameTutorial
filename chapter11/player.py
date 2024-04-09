@@ -1,7 +1,7 @@
 from typing import List
 from pgzero.builtins import Actor, keyboard, keys
 from pygame import Vector2
-from pgzero.screen import Screen
+from explosion import PlayerExplosion
 from pgzhelper import *
 from projectile import Projectile
 
@@ -38,12 +38,21 @@ class Player:
         self.window_height = window_height
 
         self.projectiles: List[Projectile] = []
+        self.explosion = None
+        self.dead = False
+
+    def explode(self):
+        self.dead = True
+        self.explosion = PlayerExplosion(self.actor)
 
     def take_damage(self):
+        if self.dead:
+            return
+        
         self.health -= 1
 
-    def print_vector(self, screen: Screen, text: str, vec: Vector2, left: int, top: int):
-        screen.draw.text("{0}: ({1:.2f}, {2:.2f})".format(text, vec.x, vec.y), topleft=(left, top))
+        if self.health <= 0:
+            self.explode()
 
     def handle_key_down(self, key: str):
         if key == keys.SPACE:
@@ -100,18 +109,29 @@ class Player:
             self.velocity = Vector2(0, 0)
 
     def update(self):
-        self.handle_input()
-        self.update_physics()
-        
+        if not self.dead:
+            self.handle_input()
+            self.update_physics()
+
+        if self.explosion:
+            if self.explosion.animate_once():
+                self.explosion = None
+
         for projectile in self.projectiles:
             projectile.update()
             if projectile.bottom < 0:
                 self.projectiles.remove(projectile)
-        
-    def draw(self, screen: Screen, debug: bool = False):
+
+    def draw(self):
         for projectile in self.projectiles:
             projectile.draw()
 
+        if self.dead:
+            self.draw_dead()
+        else:
+            self.draw_alive()
+
+    def draw_alive(self):
         if self.force.y <= 0:
             self.main_thruster.animate()
             self.main_thruster.draw()
@@ -128,8 +148,7 @@ class Player:
 
         self.actor.draw()
 
+    def draw_dead(self):
+        if self.explosion:
+            self.explosion.draw()
 
-        if debug:
-            self.print_vector(screen, "Force", self.force, 10, 10)
-            self.print_vector(screen, "Acceleration", self.debug_acceleration, 10, 30)
-            self.print_vector(screen, "Velocity", self.velocity, 10, 50)

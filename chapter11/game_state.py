@@ -47,13 +47,16 @@ class Game:
                         self.player.take_damage()
                         self.asteroid_field.remove_asteroid(asteroid)
 
-                        if self.player.health <= 0:
+                        if self.player.dead:
                             self.update_state(GameState.GAME_OVER)
 
                     for projectile in self.player.projectiles:
                         if projectile.colliderect(asteroid):
                             self.asteroid_field.remove_asteroid(asteroid)
                             self.player.projectiles.remove(projectile)
+            case GameState.GAME_OVER:
+                self.asteroid_field.update(0)
+                self.player.update()
             case _:
                 pass
 
@@ -67,20 +70,20 @@ class Game:
             case GameState.PAUSE_MENU:
                 self.star_field.draw(screen, 0)
                 self.asteroid_field.draw()
-                self.player.draw(screen, False)
+                self.player.draw()
 
                 self.pause_menu.draw(screen)
             case GameState.GAME:
                 self.star_field.draw(screen)
                 self.asteroid_field.draw()
-                self.player.draw(screen, False)
+                self.player.draw()
 
                 draw_healtbar(screen, 10, 10, self.player.health)
                 draw_score(screen, self.score, self.window_width - 10, 10)
             case GameState.GAME_OVER:
                 self.star_field.draw(screen)
                 self.asteroid_field.draw()
-                self.player.draw(screen, False)
+                self.player.draw()
 
                 self.game_over_menu.draw(screen)
 

@@ -1,7 +1,7 @@
 from typing import List
 from pgzero.builtins import Actor
 from random import randint, random
-from explosion import Explosion
+from explosion import AsteroidExplosion
 from pgzhelper import *
 
 class Asteroid(Actor):
@@ -29,7 +29,7 @@ class AsteroidField:
             self.asteroids.append(asteroid)
     
     def remove_asteroid(self, asteroid: Asteroid):
-        self.explosions.append(Explosion(asteroid))
+        self.explosions.append(AsteroidExplosion(asteroid))
         self.asteroids.remove(asteroid)
 
     def update(self, score: int) -> int:
@@ -51,7 +51,3 @@ class AsteroidField:
             explosion.draw()
         for asteroid in self.asteroids:
             asteroid.draw()
-
-
-
-    
