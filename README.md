@@ -76,7 +76,7 @@ W:\game>
 
 #### Open Visual Studio Code
 
-You can also start apps from the terminal, the Visual Studio Code app you installed earlyer can be started with the `code` command. You need to pass the current directory to `code`, you do that with the `.` argument. You need a space (` `) between the command and the argument.
+You can also start apps from the terminal, the Visual Studio Code app you installed earlier can be started with the `code` command. You need to pass the current directory to `code`, you do that with the `.` argument. You need a space (` `) between the command and the argument.
 
 ```shell
 W:\game>code .
