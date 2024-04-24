@@ -8,7 +8,7 @@ In this chapter we are going to add a game over screen and a way to restart the 
 
 Currently the game just quits when the player dies. We can do better and show a game over screen.
 
-Let's start by adding a new game over screen. Make a copy of `ui_pause_menu.py`, change the name to `ui_game_over_menu.py` change the following following code:
+Let's start by adding a new game over screen. Make a copy of `ui_pause_menu.py`, change the name to `ui_game_over_menu.py` change the following code:
 
 ```python
 from enum import Enum
